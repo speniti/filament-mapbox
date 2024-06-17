@@ -1,0 +1,34 @@
+@tailwind utilities;
+
+
+.mapboxgl-ctrl-geocoder--icon {
+  @apply hidden;
+}
+
+.mapboxgl-ctrl-geocoder {
+  --tw-ring-color: rgba(var(--gray-950), 0.1);
+
+  @apply flex rounded-lg shadow-sm ring-1 transition duration-75 bg-white focus-within:ring-2 dark:bg-white/5 focus-within:ring-[rgb(var(--primary-600))] dark:ring-white/20 dark:focus-within:ring-[rgb(var(--primary-500))] w-auto max-w-none;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  @apply block w-full border-none py-1.5 text-base text-[rgb(var(--gray-950))] outline-none transition duration-75 placeholder:text-[rgb(var(--gray-400))] focus:ring-0 disabled:text-[rgb(var(--gray-500))] dark:text-white dark:placeholder:text-[rgb(var(--gray-500))] dark:disabled:text-[rgb(var(--gray-400))] sm:text-sm sm:leading-6 bg-white/0 ps-3 pe-3 !important;
+}
+
+.mapboxgl-ctrl-geocoder .suggestions {
+  --tw-ring-color: rgba(var(--gray-950), 0.05);
+
+  @apply bg-white shadow-sm ring-1 dark:bg-[rgb(var(--gray-900))] dark:ring-white/10 sm:rounded-xl;
+}
+
+.mapboxgl-ctrl-geocoder .suggestions > li > a {
+  @apply text-[rgb(var(--gray-950))] dark:text-white;
+}
+
+.mapboxgl-ctrl-geocoder .suggestions > .active > a,
+.mapboxgl-ctrl-geocoder .suggestions > li > a:hover {
+  @apply dark:bg-[rgb(var(--gray-700))];
+}
+
+
+

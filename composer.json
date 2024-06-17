@@ -1,0 +1,29 @@
+{
+    "name": "speniti/filament-mapbox",
+    "description": "Mapbox integration for Filament panels",
+    "type": "library",
+    "license": "ISC",
+    "autoload": {
+        "psr-4": {
+            "Peniti\\FilamentMapbox\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Simone Peniti",
+            "email": "simone@peniti.it"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "filament/support": "^3.0",
+        "spatie/laravel-data": "^3.9"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Peniti\\FilamentMapbox\\FilamentMapboxServiceProvider"
+            ]
+        }
+    }
+}
