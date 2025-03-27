@@ -1,0 +1,78 @@
+name: Lint
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: NPM Install
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint:scripts
+
+  phpstan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: ./.github/actions/setup
+        with:
+          php-version: '8.4'
+
+      - name: Composer Install
+        run: composer install -q --no-interaction --optimize-autoloader --no-progress
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse --verbose --no-progress --memory-limit 512M
+
+  pint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: ./.github/actions/setup
+        with:
+          php-version: '8.4'
+
+      - name: Composer Install
+        run: composer install -q --no-interaction --optimize-autoloader --no-progress
+
+      - name: Run Pint
+        run: vendor/bin/pint --verbose --test
+
+  stylelint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: NPM Install
+        run: npm ci
+
+      - name: Run StyleLint
+        run: npm run lint:styles

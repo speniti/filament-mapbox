@@ -1,0 +1,40 @@
+laravel: '@testbench'
+
+providers:
+  - Peniti\FilamentMapbox\FilamentMapboxServiceProvider
+  - App\Providers\Filament\AdminPanelProvider
+
+migrations:
+  - workbench/database/migrations
+
+seeders:
+  - Database\Seeders\DatabaseSeeder
+
+workbench:
+  start: '/admin/mapbox-test'
+  user: 'test@example.com'
+  install: true
+  health: false
+  discovers:
+    web: true
+    api: false
+    commands: false
+    components: false
+    views: true
+  build:
+    - asset-publish
+    - create-sqlite-db
+    - db-wipe
+    - migrate-fresh
+    - filament:assets
+  assets:
+    - filament-mapbox-config
+  sync:
+    - from: app
+      to: workbench/app
+    - from: public
+      to: workbench/public
+      reverse: true
+    - from: storage
+      to: workbench/storage
+      reverse: true

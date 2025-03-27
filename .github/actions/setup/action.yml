@@ -1,0 +1,65 @@
+name: Setup
+
+description: Sets up PHP and Composer
+
+inputs:
+  php-version:
+    description: The PHP version(s) you wish to use.
+    required: true
+
+  php-extensions:
+    description: The PHP extensions you want to install.
+    required: false
+    default: curl, dom, intl, pcntl, mbstring, zip, xml,
+
+  coverage:
+    description: The coverage driver to use.
+    required: false
+    default: none
+
+runs:
+  using: composite
+  steps:
+    - name: Get PHP Extensions Cache Hash
+      id: get-cache-hash
+      env:
+        PHP_EXTENSIONS: ${{ inputs.php-extensions }}
+      run: echo hash=$(echo "$PHP_EXTENSIONS" | md5sum | awk '{print $1}') >> $GITHUB_OUTPUT
+      shell: bash
+
+    - name: Setup PHP Extensions Cache Environment
+      id: ext-cache
+      uses: shivammathur/cache-extensions@v1
+      if: inputs.php-extensions == true
+      with:
+        php-version: ${{ inputs.php-version }}
+        extensions: ${{ inputs.php-extensions }}
+        key: php-extensions-${{ steps.get-cache-hash.outputs.hash }}
+
+    - name: Cache PHP Extensions
+      uses: actions/cache@v4
+      if: inputs.php-extensions == true
+      with:
+        path: ${{ steps.ext-cache.outputs.dir }}
+        key: ${{ steps.ext-cache.outputs.key }}
+        restore-keys: ${{ steps.extcache.outputs.key }}
+
+    - name: Setup PHP and Composer
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ inputs.php-version }}
+        extensions: ${{ inputs.php-extensions }}
+        tools: composer:v2
+        coverage: ${{ inputs.coverage }}
+
+    - name: Get Composer Cache Path
+      id: composer-cache-dir
+      run: echo dir=$(composer config cache-files-dir) >> $GITHUB_OUTPUT
+      shell: bash
+
+    - name: Cache Composer Dependencies
+      uses: actions/cache@v4
+      with:
+        key: composer-cache-${{ hashFiles('**/composer.lock') }}
+        path: ${{ steps.composer-cache-dir.outputs.dir }}
+        restore-keys: composer-cache-

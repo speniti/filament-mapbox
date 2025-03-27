@@ -1,0 +1,42 @@
+name: Test
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  pest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: ./.github/actions/setup
+        with:
+          php-version: '8.4'
+          coverage: xdebug
+
+      - name: Composer Install
+        run: composer install -q --no-interaction --optimize-autoloader --no-progress
+
+      - name: Run Pest
+        run: vendor/bin/pest --ci --coverage --min=75 --coverage-clover coverage.xml --log-junit junit.xml
+
+      - name: Upload Coverage Report to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: speniti/filament-mapbox
+          files: coverage.xml
+
+      - name: Upload Test Results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: speniti/filament-mapbox
+          files: junit.xml

@@ -1,0 +1,49 @@
+name: Dependencies
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  composer:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: ./.github/actions/setup
+        with:
+          php-version: '8.4'
+          coverage: xdebug
+
+      - name: Composer Install
+        run: composer install -q --no-interaction --optimize-autoloader --no-progress --audit
+
+      - name: Composer Outdated
+        run: composer outdated --direct --strict
+
+  npm:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: NPM Install
+        run: npm ci
+
+      - name: NPM Audit
+        run: npm audit
+
+      - name: NPM Outdated
+        run: npm outdated

@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-
 import { context } from 'esbuild';
 
 const ctx = await context({
   bundle: true,
   color: true,
-  entryPoints: ['resources/js/components/geocoder.js'],
+  entryPoints: ['resources/ts/components/geocoder.ts'],
   format: 'esm',
   mainFields: ['module', 'main'],
   minify: true,
@@ -34,12 +33,11 @@ const ctx = await context({
 
           console.log(`✅  Build finished at ${now}: ${outfile}`);
         });
-      },
-    },
-  ],
+      }
+    }
+  ]
 });
 
-// eslint-disable-next-line no-undef
 if (process.argv.includes('--watch')) {
   await ctx.watch();
 } else {

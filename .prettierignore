@@ -1,0 +1,9 @@
+/.idea
+/dist
+/node_modules
+/vendor
+.env.example
+.php-cs-fixer.cache
+.phpunit.result.cache
+npm-debug.log
+yarn-error.log

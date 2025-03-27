@@ -1,14 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Peniti\FilamentMapbox;
 
 use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
+use Livewire\Livewire;
+use Peniti\FilamentMapbox\Geocoder\AddressInfoSynth;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FilamentMapboxServiceProvider extends PackageServiceProvider
+final class FilamentMapboxServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -19,6 +23,8 @@ class FilamentMapboxServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
+        Livewire::propertySynthesizer(AddressInfoSynth::class);
+
         FilamentAsset::register([
             AlpineComponent::make('mapbox', $this->package->basePath('/../dist/mapbox.js')),
             Css::make('mapbox', $this->package->basePath('/../dist/mapbox.css')),
