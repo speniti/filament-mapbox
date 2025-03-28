@@ -25,7 +25,7 @@
     <!--suppress RequiredAttributes -->
     <div
       ax-load
-      ax-load-src="{{ FilamentAsset::getAlpineComponentSrc('mapbox', 'speniti/filament-mapbox') }}"
+      ax-load-src="{{ FilamentAsset::getAlpineComponentSrc('geocoder', 'speniti/filament-mapbox') }}"
       x-data="geocoder($wire.{{ $applyStateBindingModifiers("\$entangle('{$getStatePath()}')") }}, {
         accessToken: @Js($getAccessToken()),
         clearAndBlurOnEsc: @js($getClearAndBlurOnEsc()),

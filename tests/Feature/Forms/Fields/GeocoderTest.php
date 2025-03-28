@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Forms\Fields;
 
-use App\Filament\Pages\MapboxTest;
+use App\Filament\Pages\GeocoderTest;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
 use Peniti\FilamentMapbox\Forms\Fields\Geocoder;
@@ -18,12 +18,12 @@ use function Pest\Livewire\livewire;
 
 describe(Geocoder::class, static function () {
     it('is visible', function () {
-        livewire(MapboxTest::class)
+        livewire(GeocoderTest::class)
             ->assertFormFieldExists('address');
     });
 
     it('works with strings', function () {
-        $testable = livewire(MapboxTest::class);
+        $testable = livewire(GeocoderTest::class);
 
         $testable->assertSetStrict('address', fn (string $value) => empty($value));
         $testable->fillForm(['address' => $address = fake()->address()]);
@@ -35,7 +35,7 @@ describe(Geocoder::class, static function () {
     });
 
     it('works with AddressInfo', function () {
-        $testable = livewire(MapboxTest::class);
+        $testable = livewire(GeocoderTest::class);
 
         $testable->assertSetStrict('addressInfo', fn (AddressInfo $value) => $value->isEmpty());
         $testable->fillForm(['addressInfo' => $addressInfo = new AddressInfo(fake()->address())]);
@@ -51,7 +51,7 @@ describe(Geocoder::class, static function () {
     });
 
     it('works with arrays', function () {
-        $testable = livewire(MapboxTest::class);
+        $testable = livewire(GeocoderTest::class);
 
         $testable->assertSetStrict('addressInfoArray', fn (array $value) => empty($value));
         $testable->fillForm(['addressInfoArray' => $addressInfoArray = ['placeName' => fake()->address()]]);

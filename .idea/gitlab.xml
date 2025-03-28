@@ -5,6 +5,11 @@
       <WorkspaceSettings>
         <option name="codeCompletion">
           <CodeCompletion>
+            <option name="additionalLanguages">
+              <set>
+                <option value="markdown" />
+              </set>
+            </option>
             <option name="disabledSupportedLanguages">
               <set>
                 <option value="cpp" />

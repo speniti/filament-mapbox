@@ -12,7 +12,7 @@ use Peniti\FilamentMapbox\Forms\Fields\Geocoder;
 use Peniti\FilamentMapbox\Geocoder\AddressInfo;
 
 /** @property Form $form */
-final class MapboxTest extends Page
+final class GeocoderTest extends Page
 {
     public string $address = '';
 

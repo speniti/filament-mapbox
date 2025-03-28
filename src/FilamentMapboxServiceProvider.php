@@ -26,8 +26,8 @@ final class FilamentMapboxServiceProvider extends PackageServiceProvider
         Livewire::propertySynthesizer(AddressInfoSynth::class);
 
         FilamentAsset::register([
-            AlpineComponent::make('mapbox', $this->package->basePath('/../dist/mapbox.js')),
-            Css::make('mapbox', $this->package->basePath('/../dist/mapbox.css')),
+            AlpineComponent::make('geocoder', $this->package->basePath('/../dist/components/geocoder.js')),
+            Css::make('geocoder', $this->package->basePath('/../dist/components/geocoder.css')),
 
             Css::make(
                 'filament-mapbox',

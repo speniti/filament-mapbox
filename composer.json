@@ -52,7 +52,8 @@
     "lint": [
       "@php vendor/bin/pint --verbose --test --ansi",
       "@php vendor/bin/phpstan analyse --verbose --memory-limit 512M --ansi"
-    ]
+    ],
+    "test": "@php vendor/bin/pest"
   },
   "autoload-dev": {
     "psr-4": {

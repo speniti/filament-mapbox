@@ -5,7 +5,7 @@
 
 declare(strict_types=1);
 
-use App\Filament\Pages\MapboxTest;
+use App\Filament\Pages\GeocoderTest;
 use Livewire\LivewireManager;
 use Peniti\FilamentMapbox\Geocoder\AddressInfo;
 use Peniti\FilamentMapbox\Geocoder\AddressInfoSynth;
@@ -18,7 +18,7 @@ use function PHPUnit\Framework\assertNull;
 describe(AddressInfoSynth::class, static function () {
     it('hydrates and dehydrates values', function () {
         $addressInfo = new AddressInfo(fake()->address());
-        $testable = livewire(MapboxTest::class);
+        $testable = livewire(GeocoderTest::class);
 
         $testable->updateProperty('addressInfo', $addressInfo->toArray());
         $testable->assertSetStrict('addressInfo', fn (AddressInfo $value) => $addressInfo->eq($value));
@@ -36,7 +36,7 @@ describe(AddressInfoSynth::class, static function () {
     });
 
     it('set nested properties', function () {
-        $testable = livewire(MapboxTest::class);
+        $testable = livewire(GeocoderTest::class);
         $testable->updateProperty('addressInfo', new AddressInfo()->toArray());
 
         $testable->set('addressInfo.placeName', $address = fake()->address());
@@ -47,7 +47,7 @@ describe(AddressInfoSynth::class, static function () {
     });
 
     it('unset nested properties', function () {
-        $testable = livewire(MapboxTest::class);
+        $testable = livewire(GeocoderTest::class);
         $testable->updateProperty(
             'addressInfo',
             new AddressInfo(fake()->address(), houseNumber: '123')

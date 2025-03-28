@@ -11,7 +11,7 @@ seeders:
   - Database\Seeders\DatabaseSeeder
 
 workbench:
-  start: '/admin/mapbox-test'
+  start: '/admin/geocoder-test'
   user: 'test@example.com'
   install: true
   health: false
