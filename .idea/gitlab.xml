@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LanguageServerSettings">
+    <option name="workspaceSettings">
+      <WorkspaceSettings>
+        <option name="codeCompletion">
+          <CodeCompletion>
+            <option name="additionalLanguages">
+              <set>
+                <option value="markdown" />
+              </set>
+            </option>
+            <option name="disabledSupportedLanguages">
+              <set>
+                <option value="cpp" />
+                <option value="csharp" />
+                <option value="go" />
+                <option value="haml" />
+                <option value="java" />
+                <option value="kotlin" />
+                <option value="python" />
+                <option value="ruby" />
+                <option value="rust" />
+                <option value="scala" />
+                <option value="svelte" />
+                <option value="swift" />
+                <option value="terraform" />
+              </set>
+            </option>
+          </CodeCompletion>
+        </option>
+      </WorkspaceSettings>
+    </option>
+  </component>
+</project>

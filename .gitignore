@@ -1,2 +1,5 @@
 /vendor
 /node_modules
+/.gitlab-ci-local/
+
+*-report.json

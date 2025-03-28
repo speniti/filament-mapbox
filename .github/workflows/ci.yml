@@ -1,0 +1,136 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  composer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: ./.github/actions/setup
+        with:
+          php-version: '8.4'
+          coverage: xdebug
+
+      - name: Composer Install
+        run: composer install -q --no-interaction --optimize-autoloader --no-progress --audit
+
+      - name: Composer Outdated
+        continue-on-error: true
+        run: composer outdated --direct --strict
+
+  npm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: NPM Install
+        run: npm ci
+
+      - name: NPM Audit
+        run: npm audit
+
+      - name: NPM Outdated
+        continue-on-error: true
+        run: npm outdated
+
+  eslint:
+    runs-on: ubuntu-latest
+    needs: [ composer, npm ]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: NPM Install
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint:scripts
+
+  pint:
+    runs-on: ubuntu-latest
+    needs: [ composer, npm ]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: ./.github/actions/setup
+        with:
+          php-version: '8.4'
+
+      - name: Composer Install
+        run: composer install -q --no-interaction --optimize-autoloader --no-progress
+
+      - name: Run Pint
+        run: vendor/bin/pint --verbose --test
+
+  phpstan:
+    runs-on: ubuntu-latest
+    needs: [ composer, npm ]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: ./.github/actions/setup
+        with:
+          php-version: '8.4'
+
+      - name: Composer Install
+        run: composer install -q --no-interaction --optimize-autoloader --no-progress
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse --verbose --no-progress --memory-limit 512M
+
+  stylelint:
+    runs-on: ubuntu-latest
+    needs: [ composer, npm ]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: NPM Install
+        run: npm ci
+
+      - name: Run StyleLint
+        run: npm run lint:styles
+
+  pest:
+    runs-on: ubuntu-latest
+    needs: [ eslint, pint, phpstan, stylelint ]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Test Suite
+        uses: ./.github/actions/test
+        with:
+          codecov-token: ${{ secrets.CODECOV_TOKEN }}
+

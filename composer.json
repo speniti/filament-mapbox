@@ -1,29 +1,71 @@
 {
-    "name": "speniti/filament-mapbox",
-    "description": "Mapbox integration for Filament panels",
-    "type": "library",
-    "license": "ISC",
-    "autoload": {
-        "psr-4": {
-            "Peniti\\FilamentMapbox\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Simone Peniti",
-            "email": "simone@peniti.it"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-        "filament/support": "^3.0",
-        "spatie/laravel-data": "^3.9"
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Peniti\\FilamentMapbox\\FilamentMapboxServiceProvider"
-            ]
-        }
+  "name": "speniti/filament-mapbox",
+  "description": "Mapbox integration for Filament panels",
+  "type": "library",
+  "license": "ISC",
+  "version": "1.0.0",
+  "autoload": {
+    "psr-4": {
+      "Peniti\\FilamentMapbox\\": "src/"
     }
+  },
+  "authors": [
+    {
+      "name": "Simone Peniti",
+      "email": "simone@peniti.it"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": "^8.4",
+    "filament/support": "^v3.3",
+    "league/iso3166": "^4.3"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Peniti\\FilamentMapbox\\FilamentMapboxServiceProvider"
+      ]
+    }
+  },
+  "require-dev": {
+    "orchestra/testbench": "v10.1",
+    "laravel/pint": "^1.21",
+    "larastan/larastan": "^3.2",
+    "filament/filament": "^3.3",
+    "pestphp/pest": "^3.7",
+    "pestphp/pest-plugin-livewire": "^3.0"
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "@clear",
+      "@prepare"
+    ],
+    "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+    "prepare": "@php vendor/bin/testbench package:discover --ansi",
+    "build": "@php vendor/bin/testbench workbench:build --ansi",
+    "serve": [
+      "Composer\\Config::disableProcessTimeout",
+      "@build",
+      "@php vendor/bin/testbench serve --ansi"
+    ],
+    "lint": [
+      "@php vendor/bin/pint --verbose --test --ansi",
+      "@php vendor/bin/phpstan analyse --verbose --memory-limit 512M --ansi"
+    ],
+    "test": "@php vendor/bin/pest"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\": "workbench/app/",
+      "Database\\Factories\\": "workbench/database/factories/",
+      "Database\\Seeders\\": "workbench/database/seeders/",
+      "Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
 }
