@@ -1,0 +1,53 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+
+categories:
+  - title: "🚨BREAKING CHANGES 🚨"
+    labels:
+      - "breaking change"
+  - title: "🚀 New Features"
+    labels:
+      - "enhancement"
+  - title: "🐞 Bug Fixes"
+    labels:
+      - "bug"
+  - title: "✏️ Documentation"
+    labels:
+      - documentation
+
+version-resolver:
+  major:
+    labels:
+      - "breaking changes"
+  minor:
+    labels:
+      - "enhancement"
+  patch:
+    labels:
+      - "documentation"
+      - "bug"
+  default: patch
+
+autolabeler:
+  - label: "breaking change"
+    title:
+      - "/breaking change/i"
+  - label: "documentation"
+    title:
+      - "/^doc/i"
+  - label: "bug"
+    title:
+      - "/^fix/i"
+      - "/^bug/i"
+  - label: "enhancement"
+    title:
+      - "/^feature/i"
+      - "/^feat/i"
+
+exclude-labels:
+  - invalid
+
+template: |
+  ## What’s Changed
+
+  $CHANGES
