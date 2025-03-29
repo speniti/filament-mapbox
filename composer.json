@@ -1,9 +1,8 @@
 {
   "name": "speniti/filament-mapbox",
-  "description": "Mapbox integration for Filament panels",
+  "description": "A set of tools for integrating Mapbox within the Filament ecosystem.",
   "type": "library",
-  "license": "ISC",
-  "version": "1.0.0",
+  "license": "MIT",
   "autoload": {
     "psr-4": {
       "Peniti\\FilamentMapbox\\": "src/"
