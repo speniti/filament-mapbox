@@ -6,6 +6,9 @@ import tslint from 'typescript-eslint';
 export default tslint.config(
   {
     ignores: ['**/.gitlab-ci-local/', '**/dist/', '**/vendor/'],
+  },
+  {
+    files: ['resources/**/*.ts'],
     extends: [
       eslint.configs.recommended,
       tslint.configs.strictTypeChecked,
@@ -16,14 +19,14 @@ export default tslint.config(
           globals: { ...globals.node },
           parserOptions: {
             projectService: true,
-            tsconfigRootDir: import.meta.dirname
-          }
-        }
-      }
-    ]
+            tsconfigRootDir: import.meta.dirname,
+          },
+        },
+      },
+    ],
   },
   {
     files: ['esbuild.js', '*.config.js'],
-    extends: [tslint.configs.disableTypeChecked]
-  }
+    extends: [tslint.configs.disableTypeChecked],
+  },
 );
