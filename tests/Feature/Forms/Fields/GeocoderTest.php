@@ -95,6 +95,14 @@ describe(Geocoder::class, static function () {
         livewire(GeocoderTypes::class)
             ->assertSee("types: 'country, region',", escape: false);
     });
+
+    it('can be required', function () {
+        $testable = livewire(GeocoderRequired::class);
+
+        $testable->assertSetStrict('address', fn (string $value) => empty($value));
+        $testable->call('save');
+        $testable->assertHasFormErrors(['address' => 'required']);
+    });
 });
 
 final class GeocoderClearAndBlurOnEsc extends Page
@@ -184,5 +192,26 @@ final class GeocoderTypes extends Page
         return $form->schema([
             Geocoder::make('address')->types([FeatureType::Country, FeatureType::Region]),
         ]);
+    }
+}
+
+/** @property Form $form */
+final class GeocoderRequired extends Page
+{
+    public string $address = '';
+
+    /** @noinspection LaravelUnknownViewInspection */
+    protected static string $view = 'filament.pages.mapbox-test';
+
+    public function form(Form $form): Form
+    {
+        return $form->schema([
+            Geocoder::make('address')->required(),
+        ]);
+    }
+
+    public function save(): void
+    {
+        $this->form->getState();
     }
 }

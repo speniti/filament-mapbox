@@ -16,7 +16,7 @@
     :suffix-actions="$getSuffixActions()"
     :suffix-icon="$getSuffixIcon()"
     :suffix-icon-color="$getSuffixIconColor()"
-    :valid="! $errors->has($statePath)"
+    :valid="! $errors->has($getStatePath())"
     :attributes="
       \Filament\Support\prepare_inherited_attributes($getExtraAttributeBag())
           ->class(['fi-fo-geocoder-input'])
@@ -28,14 +28,14 @@
       ax-load-src="{{ FilamentAsset::getAlpineComponentSrc('geocoder', 'speniti/filament-mapbox') }}"
       x-data="geocoder($wire.{{ $applyStateBindingModifiers("\$entangle('{$getStatePath()}')") }}, {
         accessToken: @Js($getAccessToken()),
-        clearAndBlurOnEsc: @js($getClearAndBlurOnEsc()),
+        clearAndBlurOnEsc: @js($getClearAndBlurOnEsc(), JSON_THROW_ON_ERROR),
         countries: @Js($getCountries()),
         fuzzyMatch: @Js($getFuzzyMatch()),
         limit: @Js($getLimit()),
         minLength: @Js($getMinLength()),
         placeholder: @Js($getPlaceholder()),
         types: @Js($getTypes()),
-    }, @js($isDisabled()))"
+    }, @js($isDisabled(), JSON_THROW_ON_ERROR))"
       x-ignore
       wire:ignore
     ></div>
