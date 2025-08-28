@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace Peniti\FilamentMapbox\Forms\Fields;
 
 use Closure;
-use Filament\Forms\Components\Concerns\CanBeDisabled;
 use Filament\Forms\Components\Concerns\HasAffixes;
 use Filament\Forms\Components\Concerns\HasPlaceholder;
 use Filament\Forms\Components\Field;
@@ -19,7 +18,6 @@ use Peniti\FilamentMapbox\Geocoder\FeatureType;
 
 final class Geocoder extends Field
 {
-    use CanBeDisabled;
     use HasAffixes;
     use HasPlaceholder;
 

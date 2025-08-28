@@ -8,8 +8,9 @@ declare(strict_types=1);
 namespace Tests\Feature\Forms\Fields;
 
 use App\Filament\Pages\GeocoderTest;
-use Filament\Forms\Form;
+use Exception;
 use Filament\Pages\Page;
+use Filament\Schemas\Schema;
 use Peniti\FilamentMapbox\Forms\Fields\Geocoder;
 use Peniti\FilamentMapbox\Geocoder\AddressInfo;
 use Peniti\FilamentMapbox\Geocoder\FeatureType;
@@ -19,7 +20,7 @@ use function Pest\Livewire\livewire;
 describe(Geocoder::class, static function () {
     it('is visible', function () {
         livewire(GeocoderTest::class)
-            ->assertFormFieldExists('address');
+            ->assertFormFieldExists('address', 'form');
     });
 
     it('works with strings', function () {
@@ -43,10 +44,17 @@ describe(Geocoder::class, static function () {
 
         $testable->assertSetStrict('data', fn (array $value) => empty($value));
         $testable->call('save');
-        $testable->assertSetStrict('data', function (array $value) use ($addressInfo) {
-            assert($value['addressInfo'] instanceof AddressInfo);
 
-            return $addressInfo->eq($value['addressInfo']);
+        $testable->assertSetStrict('data', function (array $value) use ($addressInfo) {
+            assert(is_array($value['addressInfo']));
+
+            return empty(array_diff($value['addressInfoArray'], $addressInfo->toArray()));
+        });
+
+        $testable->assertSet('addressInfo', function (AddressInfo $value) use ($addressInfo) {
+            assert($value instanceof AddressInfo);
+
+            return $value->eq($addressInfo);
         });
     });
 
@@ -110,11 +118,12 @@ final class GeocoderClearAndBlurOnEsc extends Page
     public string $address = '';
 
     /** @noinspection LaravelUnknownViewInspection */
-    protected static string $view = 'filament.pages.mapbox-test';
+    protected string $view = 'filament.pages.mapbox-test';
 
-    public function form(Form $form): Form
+    /** @throws Exception */
+    public function form(Schema $form): Schema
     {
-        return $form->schema([
+        return $form->components([
             Geocoder::make('address')->clearAndBlurOnEsc(),
         ]);
     }
@@ -125,11 +134,12 @@ final class GeocoderCountries extends Page
     public string $address = '';
 
     /** @noinspection LaravelUnknownViewInspection */
-    protected static string $view = 'filament.pages.mapbox-test';
+    protected string $view = 'filament.pages.mapbox-test';
 
-    public function form(Form $form): Form
+    /** @throws Exception */
+    public function form(Schema $form): Schema
     {
-        return $form->schema([
+        return $form->components([
             Geocoder::make('address')->countries('IT, US'),
         ]);
     }
@@ -140,11 +150,12 @@ final class GeocoderFuzzyMatch extends Page
     public string $address = '';
 
     /** @noinspection LaravelUnknownViewInspection */
-    protected static string $view = 'filament.pages.mapbox-test';
+    protected string $view = 'filament.pages.mapbox-test';
 
-    public function form(Form $form): Form
+    /** @throws Exception */
+    public function form(Schema $form): Schema
     {
-        return $form->schema([
+        return $form->components([
             Geocoder::make('address')->fuzzyMatch(),
         ]);
     }
@@ -155,11 +166,12 @@ final class GeocoderLimit extends Page
     public string $address = '';
 
     /** @noinspection LaravelUnknownViewInspection */
-    protected static string $view = 'filament.pages.mapbox-test';
+    protected string $view = 'filament.pages.mapbox-test';
 
-    public function form(Form $form): Form
+    /** @throws Exception */
+    public function form(Schema $form): Schema
     {
-        return $form->schema([
+        return $form->components([
             Geocoder::make('address')->limit(10),
         ]);
     }
@@ -170,11 +182,12 @@ final class GeocoderMinLength extends Page
     public string $address = '';
 
     /** @noinspection LaravelUnknownViewInspection */
-    protected static string $view = 'filament.pages.mapbox-test';
+    protected string $view = 'filament.pages.mapbox-test';
 
-    public function form(Form $form): Form
+    /** @throws Exception */
+    public function form(Schema $form): Schema
     {
-        return $form->schema([
+        return $form->components([
             Geocoder::make('address')->minLength(3),
         ]);
     }
@@ -185,27 +198,29 @@ final class GeocoderTypes extends Page
     public string $address = '';
 
     /** @noinspection LaravelUnknownViewInspection */
-    protected static string $view = 'filament.pages.mapbox-test';
+    protected string $view = 'filament.pages.mapbox-test';
 
-    public function form(Form $form): Form
+    /** @throws Exception */
+    public function form(Schema $form): Schema
     {
-        return $form->schema([
+        return $form->components([
             Geocoder::make('address')->types([FeatureType::Country, FeatureType::Region]),
         ]);
     }
 }
 
-/** @property Form $form */
+/** @property Schema $form */
 final class GeocoderRequired extends Page
 {
     public string $address = '';
 
     /** @noinspection LaravelUnknownViewInspection */
-    protected static string $view = 'filament.pages.mapbox-test';
+    protected string $view = 'filament.pages.mapbox-test';
 
-    public function form(Form $form): Form
+    /** @throws Exception */
+    public function form(Schema $form): Schema
     {
-        return $form->schema([
+        return $form->components([
             Geocoder::make('address')->required(),
         ]);
     }

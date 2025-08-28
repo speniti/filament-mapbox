@@ -6,12 +6,12 @@ declare(strict_types=1);
 
 namespace App\Filament\Pages;
 
-use Filament\Forms\Form;
+use Exception;
 use Filament\Pages\Page;
+use Filament\Schemas\Schema;
 use Peniti\FilamentMapbox\Forms\Fields\Geocoder;
 use Peniti\FilamentMapbox\Geocoder\AddressInfo;
 
-/** @property Form $form */
 final class GeocoderTest extends Page
 {
     public string $address = '';
@@ -27,15 +27,16 @@ final class GeocoderTest extends Page
     protected static bool $shouldRegisterNavigation = false;
 
     /** @noinspection LaravelUnknownViewInspection */
-    protected static string $view = 'filament.pages.mapbox-test';
+    protected string $view = 'filament.pages.mapbox-test';
 
-    public function form(Form $form): Form
+    /** @throws Exception */
+    public function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             Geocoder::make('address'),
             Geocoder::make('addressInfo'),
             Geocoder::make('addressInfoArray'),
-        ]);
+        ])->statePath('');
     }
 
     public function mount(): void
