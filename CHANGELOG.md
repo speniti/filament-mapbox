@@ -2,6 +2,14 @@
 
 All notable changes to `speniti/filament-mapbox` will be documented in this file.
 
+## v2.0.0 - 2025-09-01
+
+### What’s Changed
+
+### 🚨BREAKING CHANGES 🚨
+
+* breaking change: upgraded to Filament v4 (#6) @speniti
+
 ## v1.0.4 - 2025-07-16
 
 ### What’s Changed
