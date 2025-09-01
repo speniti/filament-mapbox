@@ -6,6 +6,7 @@ export default {
       true,
       { ignoreAtRules: ['tailwind', 'apply', 'layer', 'config'] },
     ],
+    'at-rule-no-unknown': [true, { ignoreAtRules: ['reference'] }],
     'selector-class-pattern': ['', {}],
   },
 };

@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/Users/simone.peniti/Library/Application Support/Herd/bin/php84",
+            "args": [
+                "/Users/simone.peniti/Code/filament-mapbox/vendor/orchestra/testbench-core/laravel/artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}

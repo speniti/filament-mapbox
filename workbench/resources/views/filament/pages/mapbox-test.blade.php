@@ -1,8 +1,8 @@
 <x-filament-panels::page>
-  <form wire:submit.prevent="save" class="w-full max-w-md mx-auto">
+  <form wire:submit.prevent="save" style="width: 100%; max-width: 28rem; margin-inline: auto;">
     {{ $this->form }}
 
-    <x-filament::button class="mt-6 w-full" type="submit">
+    <x-filament::button style="width: 100%; margin-top: 1.5rem;" type="submit">
       Save
     </x-filament::button>
   </form>

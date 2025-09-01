@@ -1,288 +1,326 @@
+/*! tailwindcss v4.1.12 | MIT License | https://tailwindcss.com */
+@layer properties;
 .mapboxgl-ctrl-geocoder {
   width: 100%;
   max-width: none;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-lg, 0.5rem);
   background-color: transparent;
   --tw-shadow: 0 0 #0000;
-  --tw-shadow-colored: 0 0 #0000;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   z-index: auto;
   font-family: inherit;
   .mapboxgl-ctrl-geocoder--icon {
-    display: none
+    display: none;
   }
   .mapboxgl-ctrl-geocoder--input {
-    display: block !important
-  }
-  .mapboxgl-ctrl-geocoder--input {
-    width: 100% !important
-  }
-  .mapboxgl-ctrl-geocoder--input {
-    border-style: none !important
-  }
-  .mapboxgl-ctrl-geocoder--input {
-    background-color: transparent !important
-  }
-  .mapboxgl-ctrl-geocoder--input {
-    padding-top: 0.375rem !important;
-    padding-bottom: 0.375rem !important
-  }
-  .mapboxgl-ctrl-geocoder--input {
-    font-size: 1rem !important;
-    line-height: 1.5rem !important
-  }
-  .mapboxgl-ctrl-geocoder--input {
-    --tw-text-opacity: 1 !important;
-    color: rgb(3 7 18 / var(--tw-text-opacity, 1)) !important
-  }
-  .mapboxgl-ctrl-geocoder--input {
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter !important;
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter !important;
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter !important;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
-    transition-duration: 150ms !important
-  }
-  .mapboxgl-ctrl-geocoder--input {
-    transition-duration: 75ms !important
-  }
-  .mapboxgl-ctrl-geocoder--input::-moz-placeholder {
-    --tw-text-opacity: 1 !important;
-    color: rgb(156 163 175 / var(--tw-text-opacity, 1)) !important
-  }
-  .mapboxgl-ctrl-geocoder--input::placeholder {
-    --tw-text-opacity: 1 !important;
-    color: rgb(156 163 175 / var(--tw-text-opacity, 1)) !important
-  }
-  .mapboxgl-ctrl-geocoder--input:focus {
-    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color) !important;
-    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color) !important;
-    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000) !important
-  }
-  .mapboxgl-ctrl-geocoder--input:disabled {
-    --tw-text-opacity: 1 !important;
-    color: rgb(107 114 128 / var(--tw-text-opacity, 1)) !important
-  }
-  .mapboxgl-ctrl-geocoder--input:disabled {
-    -webkit-text-fill-color: #6b7280 !important
-  }
-  .mapboxgl-ctrl-geocoder--input:disabled::-moz-placeholder {
-    -webkit-text-fill-color: #9ca3af !important
-  }
-  .mapboxgl-ctrl-geocoder--input:disabled::placeholder {
-    -webkit-text-fill-color: #9ca3af !important
-  }
-  .mapboxgl-ctrl-geocoder--input:is(.dark *) {
-    --tw-text-opacity: 1 !important;
-    color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important
-  }
-  .mapboxgl-ctrl-geocoder--input:is(.dark *)::-moz-placeholder {
-    --tw-text-opacity: 1 !important;
-    color: rgb(107 114 128 / var(--tw-text-opacity, 1)) !important
-  }
-  .mapboxgl-ctrl-geocoder--input:is(.dark *)::placeholder {
-    --tw-text-opacity: 1 !important;
-    color: rgb(107 114 128 / var(--tw-text-opacity, 1)) !important
-  }
-  .mapboxgl-ctrl-geocoder--input:disabled:is(.dark *) {
-    --tw-text-opacity: 1 !important;
-    color: rgb(156 163 175 / var(--tw-text-opacity, 1)) !important
-  }
-  .mapboxgl-ctrl-geocoder--input:disabled:is(.dark *) {
-    -webkit-text-fill-color: #9ca3af !important
-  }
-  .mapboxgl-ctrl-geocoder--input:disabled:is(.dark *)::-moz-placeholder {
-    -webkit-text-fill-color: #6b7280 !important
-  }
-  .mapboxgl-ctrl-geocoder--input:disabled:is(.dark *)::placeholder {
-    -webkit-text-fill-color: #6b7280 !important
-  }
-  @media (min-width: 640px) {
-    .mapboxgl-ctrl-geocoder--input {
-      font-size: 0.875rem !important;
-      line-height: 1.25rem !important
+    display: block;
+    width: 100%;
+    --tw-border-style: none;
+    border-style: none;
+    background-color: transparent;
+    padding-inline: calc(var(--spacing, 0.25rem) * 3);
+    padding-block: calc(var(--spacing, 0.25rem) * 1.5);
+    font-size: var(--text-base, 1rem);
+    line-height: var(--tw-leading, var(--text-base--line-height, calc(1.5 / 1)));
+    color: var(--color-gray-950, oklch(13% 0.028 261.692));
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function, cubic-bezier(0.4, 0, 0.2, 1)));
+    transition-duration: var(--tw-duration, var(--default-transition-duration, 150ms));
+    --tw-duration: 75ms;
+    transition-duration: 75ms;
+    &::placeholder {
+      color: var(--color-gray-400, oklch(70.7% 0.022 261.325));
     }
-  }
-  @media (min-width: 640px) {
-    .mapboxgl-ctrl-geocoder--input {
-      line-height: 1.5rem !important
+    &:focus {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+    &:disabled {
+      color: var(--color-gray-500, oklch(55.1% 0.027 264.364));
+    }
+    &:disabled {
+      -webkit-text-fill-color: oklch(55.1% 0.027 264.364);
+    }
+    &:disabled {
+      &::placeholder {
+        -webkit-text-fill-color: oklch(70.7% 0.022 261.325);
+      }
+    }
+    @media (width >= 40rem) {
+      font-size: var(--text-sm, 0.875rem);
+      line-height: var(--tw-leading, var(--text-sm--line-height, calc(1.25 / 0.875)));
+    }
+    @media (width >= 40rem) {
+      --tw-leading: calc(var(--spacing, 0.25rem) * 6);
+      line-height: calc(var(--spacing, 0.25rem) * 6);
+    }
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-white, #fff);
+    }
+    @media (prefers-color-scheme: dark) {
+      &::placeholder {
+        color: var(--color-gray-500, oklch(55.1% 0.027 264.364));
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      &:disabled {
+        color: var(--color-gray-400, oklch(70.7% 0.022 261.325));
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      &:disabled {
+        -webkit-text-fill-color: oklch(70.7% 0.022 261.325);
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      &:disabled {
+        &::placeholder {
+          -webkit-text-fill-color: oklch(55.1% 0.027 264.364);
+        }
+      }
+    }
+    &:focus {
+      --tw-outline-style: none;
+      outline-style: none;
     }
   }
   .suggestions-wrapper {
-    left: 1rem;
-    right: 1rem
-  }
-  .suggestions-wrapper {
-    max-height: 24rem
-  }
-  .suggestions-wrapper {
-    overflow: auto
-  }
-  .suggestions-wrapper {
-    border-radius: 0.5rem
-  }
-  .suggestions-wrapper {
-    --tw-bg-opacity: 1;
-    background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
-  }
-  .suggestions-wrapper:is(.dark *) {
-    --tw-bg-opacity: 1;
-    background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1))
-  }
-  @media (min-width: 640px) {
-    .suggestions-wrapper {
-      left: auto;
-      right: auto
+    inset-inline: calc(var(--spacing, 0.25rem) * 4);
+    max-height: calc(var(--spacing, 0.25rem) * 96);
+    overflow: auto;
+    border-radius: var(--radius-lg, 0.5rem);
+    background-color: var(--color-white, #fff);
+    @media (width >= 40rem) {
+      inset-inline: auto;
     }
-  }
-  .suggestions-wrapper {
-    .suggestions {
-      margin-top: 0.5rem
-    }
-    .suggestions > :not([hidden]) ~ :not([hidden]) {
-      --tw-divide-y-reverse: 0;
-      border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
-      border-bottom-width: calc(1px * var(--tw-divide-y-reverse))
-    }
-    .suggestions > :not([hidden]) ~ :not([hidden]) {
-      --tw-divide-opacity: 1;
-      border-color: rgb(229 231 235 / var(--tw-divide-opacity, 1))
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-gray-900, oklch(21% 0.034 264.665));
     }
     .suggestions {
-      border-radius: 0.5rem
-    }
-    .suggestions {
-      --tw-bg-opacity: 1;
-      background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
-    }
-    .suggestions {
-      --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-      --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
-    }
-    .suggestions {
-      --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-      --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-      box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
-    }
-    .suggestions {
-      --tw-ring-color: rgb(3 7 18 / 0.05)
-    }
-    .suggestions {
-      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-      transition-duration: 150ms
-    }
-    .suggestions:is(.dark *) > :not([hidden]) ~ :not([hidden]) {
-      border-color: rgb(255 255 255 / 0.1)
-    }
-    .suggestions:is(.dark *) {
-      --tw-bg-opacity: 1;
-      background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1))
-    }
-    .suggestions:is(.dark *) {
-      --tw-ring-color: rgb(255 255 255 / 0.1)
-    }
-    .suggestions {
-      li {
-        scroll-margin-top: 2.25rem
+      margin-top: calc(var(--spacing, 0.25rem) * 2);
+      :where(& > :not(:last-child)) {
+        --tw-divide-y-reverse: 0;
+        border-bottom-style: var(--tw-border-style);
+        border-top-style: var(--tw-border-style);
+        border-top-width: calc(1px * var(--tw-divide-y-reverse));
+        border-bottom-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+      }
+      :where(& > :not(:last-child)) {
+        border-color: var(--color-gray-200, oklch(92.8% 0.006 264.531));
+      }
+      border-radius: var(--radius-lg, 0.5rem);
+      background-color: var(--color-white, #fff);
+      --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      --tw-ring-color: color-mix(in srgb, oklch(13% 0.028 261.692) 5%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-gray-950, oklch(13% 0.028 261.692)) 5%, transparent);
+      }
+      transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
+      transition-timing-function: var(--tw-ease, var(--default-transition-timing-function, cubic-bezier(0.4, 0, 0.2, 1)));
+      transition-duration: var(--tw-duration, var(--default-transition-duration, 150ms));
+      @media (prefers-color-scheme: dark) {
+        :where(& > :not(:last-child)) {
+          border-color: color-mix(in srgb, #fff 10%, transparent);
+          @supports (color: color-mix(in lab, red, red)) {
+            border-color: color-mix(in oklab, var(--color-white, #fff) 10%, transparent);
+          }
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--color-gray-900, oklch(21% 0.034 264.665));
+      }
+      @media (prefers-color-scheme: dark) {
+        --tw-ring-color: color-mix(in srgb, #fff 10%, transparent);
+        @supports (color: color-mix(in lab, red, red)) {
+          --tw-ring-color: color-mix(in oklab, var(--color-white, #fff) 10%, transparent);
+        }
       }
       li {
-        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        transition-duration: 150ms
-      }
-      li {
-        transition-duration: 75ms
-      }
-      li:focus-within {
-        --tw-bg-opacity: 1;
-        background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1))
-      }
-      li:focus-within:is(.dark *) {
-        background-color: rgb(255 255 255 / 0.05)
-      }
-      li {
+        scroll-margin-top: calc(var(--spacing, 0.25rem) * 9);
+        transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
+        transition-timing-function: var(--tw-ease, var(--default-transition-timing-function, cubic-bezier(0.4, 0, 0.2, 1)));
+        transition-duration: var(--tw-duration, var(--default-transition-duration, 150ms));
+        --tw-duration: 75ms;
+        transition-duration: 75ms;
+        &:focus-within {
+          background-color: var(--color-gray-50, oklch(98.5% 0.002 247.839));
+        }
+        @media (prefers-color-scheme: dark) {
+          &:focus-within {
+            background-color: color-mix(in srgb, #fff 5%, transparent);
+            @supports (color: color-mix(in lab, red, red)) {
+              background-color: color-mix(in oklab, var(--color-white, #fff) 5%, transparent);
+            }
+          }
+        }
         a:hover, &.active > a {
-          --tw-bg-opacity: 1;
-          background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1))
-        }
-        a:hover:is(.dark *), &.active > a:is(.dark *) {
-          background-color: rgb(255 255 255 / 0.05)
-        }
-        .mapboxgl-ctrl-geocoder--suggestion-title {
-          font-size: 0.875rem;
-          line-height: 1.25rem
+          background-color: var(--color-gray-50, oklch(98.5% 0.002 247.839));
+          @media (prefers-color-scheme: dark) {
+            background-color: color-mix(in srgb, #fff 5%, transparent);
+            @supports (color: color-mix(in lab, red, red)) {
+              background-color: color-mix(in oklab, var(--color-white, #fff) 5%, transparent);
+            }
+          }
         }
         .mapboxgl-ctrl-geocoder--suggestion-title {
-          font-weight: 500
-        }
-        .mapboxgl-ctrl-geocoder--suggestion-title {
-          --tw-text-opacity: 1;
-          color: rgb(3 7 18 / var(--tw-text-opacity, 1))
-        }
-        .mapboxgl-ctrl-geocoder--suggestion-title:is(.dark *) {
-          --tw-text-opacity: 1;
-          color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+          font-size: var(--text-sm, 0.875rem);
+          line-height: var(--tw-leading, var(--text-sm--line-height, calc(1.25 / 0.875)));
+          --tw-font-weight: var(--font-weight-medium, 500);
+          font-weight: var(--font-weight-medium, 500);
+          color: var(--color-gray-950, oklch(13% 0.028 261.692));
+          @media (prefers-color-scheme: dark) {
+            color: var(--color-white, #fff);
+          }
         }
         .mapboxgl-ctrl-geocoder--suggestion-address {
-          font-size: 0.875rem;
-          line-height: 1.25rem
-        }
-        .mapboxgl-ctrl-geocoder--suggestion-address {
-          --tw-text-opacity: 1;
-          color: rgb(107 114 128 / var(--tw-text-opacity, 1))
-        }
-        .mapboxgl-ctrl-geocoder--suggestion-address:is(.dark *) {
-          --tw-text-opacity: 1;
-          color: rgb(156 163 175 / var(--tw-text-opacity, 1))
+          font-size: var(--text-sm, 0.875rem);
+          line-height: var(--tw-leading, var(--text-sm--line-height, calc(1.25 / 0.875)));
+          color: var(--color-gray-500, oklch(55.1% 0.027 264.364));
+          @media (prefers-color-scheme: dark) {
+            color: var(--color-gray-400, oklch(70.7% 0.022 261.325));
+          }
         }
       }
       .mapboxgl-ctrl-geocoder--powered-by {
-        width: 100%
-      }
-      .mapboxgl-ctrl-geocoder--powered-by {
-        --tw-bg-opacity: 1;
-        background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1))
-      }
-      .mapboxgl-ctrl-geocoder--powered-by {
-        padding: 0px
-      }
-      .mapboxgl-ctrl-geocoder--powered-by {
-        text-align: center
-      }
-      .mapboxgl-ctrl-geocoder--powered-by {
-        font-weight: 500
-      }
-      .mapboxgl-ctrl-geocoder--powered-by {
-        line-height: 1
-      }
-      .mapboxgl-ctrl-geocoder--powered-by {
-        --tw-text-opacity: 1;
-        color: rgb(107 114 128 / var(--tw-text-opacity, 1))
-      }
-      .mapboxgl-ctrl-geocoder--powered-by:is(.dark *) {
-        background-color: rgb(255 255 255 / 0.05)
-      }
-      .mapboxgl-ctrl-geocoder--powered-by:is(.dark *) {
-        --tw-text-opacity: 1;
-        color: rgb(156 163 175 / var(--tw-text-opacity, 1))
-      }
-      .mapboxgl-ctrl-geocoder--powered-by {
-        a {
-          display: block
+        width: 100%;
+        background-color: var(--color-gray-50, oklch(98.5% 0.002 247.839));
+        padding: calc(var(--spacing, 0.25rem) * 0);
+        text-align: center;
+        --tw-leading: 1;
+        line-height: 1;
+        --tw-font-weight: var(--font-weight-medium, 500);
+        font-weight: var(--font-weight-medium, 500);
+        color: var(--color-gray-500, oklch(55.1% 0.027 264.364));
+        @media (prefers-color-scheme: dark) {
+          background-color: color-mix(in srgb, #fff 5%, transparent);
+          @supports (color: color-mix(in lab, red, red)) {
+            background-color: color-mix(in oklab, var(--color-white, #fff) 5%, transparent);
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          color: var(--color-gray-400, oklch(70.7% 0.022 261.325));
         }
         a {
-          width: 100%
-        }
-        a {
-          padding-top: 0.5rem;
-          padding-bottom: 0.5rem
+          display: block;
+          width: 100%;
+          padding-block: calc(var(--spacing, 0.25rem) * 2);
         }
       }
+    }
+  }
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-divide-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-duration: initial;
+      --tw-leading: initial;
+      --tw-divide-y-reverse: 0;
+      --tw-border-style: solid;
+      --tw-font-weight: initial;
     }
   }
 }
