@@ -10,7 +10,7 @@ use Illuminate\Support\Arr;
 use Livewire\Mechanisms\HandleComponents\Synthesizers\Synth;
 
 /** @phpstan-import-type AddressInfoArray from AddressInfo */
-final class AddressInfoSynth extends Synth
+class AddressInfoSynth extends Synth
 {
     public static string $key = 'addressInfo';
 

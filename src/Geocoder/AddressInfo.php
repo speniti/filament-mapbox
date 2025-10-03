@@ -12,7 +12,7 @@ use Stringable;
  *
  * @implements Arrayable<string, string|list<int>>
  */
-final readonly class AddressInfo implements Arrayable, Stringable
+readonly class AddressInfo implements Arrayable, Stringable
 {
     /** @param list<int>|null $coords */
     public function __construct(

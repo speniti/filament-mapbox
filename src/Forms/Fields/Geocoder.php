@@ -16,7 +16,7 @@ use League\ISO3166\Exception\DomainException;
 use League\ISO3166\ISO3166;
 use Peniti\FilamentMapbox\Geocoder\FeatureType;
 
-final class Geocoder extends Field
+class Geocoder extends Field
 {
     use HasAffixes;
     use HasPlaceholder;
