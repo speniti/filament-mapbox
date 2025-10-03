@@ -2,6 +2,14 @@
 
 All notable changes to `speniti/filament-mapbox` will be documented in this file.
 
+## v2.1.0 - 2025-10-03
+
+### What’s Changed
+
+### 🚀 New Features
+
+* feat: Allow classes to be extended by removing the final keyword  (#8) @speniti
+
 ## v2.0.0 - 2025-09-01
 
 ### What’s Changed
