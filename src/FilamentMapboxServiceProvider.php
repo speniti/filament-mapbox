@@ -12,7 +12,7 @@ use Peniti\FilamentMapbox\Geocoder\AddressInfoSynth;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-final class FilamentMapboxServiceProvider extends PackageServiceProvider
+class FilamentMapboxServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
