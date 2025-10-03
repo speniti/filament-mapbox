@@ -25,7 +25,7 @@ runs:
       shell: bash
 
     - name: Upload Coverage Report to Codecov
-      if: ${{ inputs.codecov-token == true && !cancelled() }}
+      if: ${{ inputs.codecov-token && !cancelled() }}
       uses: codecov/codecov-action@v5
       with:
         token: ${{ inputs.codecov-token }}
@@ -33,7 +33,7 @@ runs:
         files: coverage.xml
 
     - name: Upload Test Results to Codecov
-      if: ${{ inputs.codecov-token == true && !cancelled() }}
+      if: ${{ inputs.codecov-token && !cancelled() }}
       uses: codecov/test-results-action@v1
       with:
         token: ${{ inputs.codecov-token }}
