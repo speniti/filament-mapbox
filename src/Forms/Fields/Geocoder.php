@@ -14,6 +14,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use League\ISO3166\Exception\DomainException;
 use League\ISO3166\ISO3166;
+use League\ISO639\
 use Peniti\FilamentMapbox\Geocoder\FeatureType;
 
 class Geocoder extends Field
@@ -24,6 +25,8 @@ class Geocoder extends Field
     private bool|Closure|null $clearAndBlurOnEsc = null;
 
     private string|Closure|null $countries = null;
+
+    private string|Closure|null $language = null;
 
     private bool|Closure|null $fuzzyMatch = null;
 
@@ -77,6 +80,14 @@ class Geocoder extends Field
         return $this->countries($country);
     }
 
+    /** @param string|Closure(mixed...):string $language */
+    public function language(string|Closure $language): self
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
     /** @param bool|Closure(mixed...):bool $fuzzyMatch */
     public function fuzzyMatch(bool|Closure $fuzzyMatch = true): self
     {
@@ -110,6 +121,11 @@ class Geocoder extends Field
         assert(is_string($countries) || is_null($countries));
 
         return $countries;
+    }
+
+    public function getLanguage(): ?string
+    {
+        return $this->language;
     }
 
     public function getFuzzyMatch(): ?bool
