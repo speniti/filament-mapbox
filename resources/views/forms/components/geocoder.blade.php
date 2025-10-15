@@ -30,6 +30,7 @@
         accessToken: @Js($getAccessToken()),
         clearAndBlurOnEsc: @js($getClearAndBlurOnEsc(), JSON_THROW_ON_ERROR),
         countries: @Js($getCountries()),
+        language: @Js($getLanguage()),
         fuzzyMatch: @Js($getFuzzyMatch()),
         limit: @Js($getLimit()),
         minLength: @Js($getMinLength()),
