@@ -14,7 +14,6 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use League\ISO3166\Exception\DomainException;
 use League\ISO3166\ISO3166;
-use League\ISO639\
 use Peniti\FilamentMapbox\Geocoder\FeatureType;
 
 class Geocoder extends Field
@@ -26,7 +25,7 @@ class Geocoder extends Field
 
     private string|Closure|null $countries = null;
 
-    private string|Closure|null $language = null;
+    private string|Closure|null $language = 'en';
 
     private bool|Closure|null $fuzzyMatch = null;
 
