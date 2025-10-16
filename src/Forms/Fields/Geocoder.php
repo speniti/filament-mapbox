@@ -25,7 +25,7 @@ class Geocoder extends Field
 
     private string|Closure|null $countries = null;
 
-    private string|Closure|null $language = 'en';
+    private string|Closure|null $language = null;
 
     private bool|Closure|null $fuzzyMatch = null;
 
