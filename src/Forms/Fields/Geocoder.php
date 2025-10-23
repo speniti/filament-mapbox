@@ -127,7 +127,7 @@ class Geocoder extends Field
     {
         $language = $this->evaluate($this->language);
 
-        assert(is_string($language));
+        assert(is_string($language) || is_null($language));
 
         return $language;
     }

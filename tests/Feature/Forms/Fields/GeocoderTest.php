@@ -76,32 +76,32 @@ describe(Geocoder::class, static function () {
 
     it('clears when the esc key is pressed', function () {
         livewire(GeocoderClearAndBlurOnEsc::class)
-            ->assertSee('clearAndBlurOnEsc: true,');
+            ->assertSee('\u0022clearAndBlurOnEsc\u0022:true,');
     });
 
     it('limits results to a specified country or countries', function () {
         livewire(GeocoderCountries::class)
-            ->assertSee("countries: 'IT, US',", escape: false);
+            ->assertSee("\u0022countries\u0022:\u0022IT", escape: false);
     });
 
     it('attempts approximate, as well as exact, matching', function () {
         livewire(GeocoderFuzzyMatch::class)
-            ->assertSee('fuzzyMatch: true,');
+            ->assertSee('\u0022fuzzyMatch\u0022:true');
     });
 
     it('limits the number of results returned', function () {
         livewire(GeocoderLimit::class)
-            ->assertSee('limit: 10,');
+            ->assertSee('\u0022limit\u0022:10');
     });
 
     it('set the minimum number of characters required to trigger a search', function () {
         livewire(GeocoderMinLength::class)
-            ->assertSee('minLength: 3,');
+            ->assertSee('\u0022minLength\u0022:3');
     });
 
     it('filters results to match specified types', function () {
         livewire(GeocoderTypes::class)
-            ->assertSee("types: 'country, region',", escape: false);
+            ->assertSee("\u0022types\u0022:\u0022country, region\u0022", escape: false);
     });
 
     it('can be required', function () {
