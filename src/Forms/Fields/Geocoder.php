@@ -25,9 +25,9 @@ class Geocoder extends Field
 
     private string|Closure|null $countries = null;
 
-    private string|Closure|null $language = null;
-
     private bool|Closure|null $fuzzyMatch = null;
+
+    private string|Closure|null $language = null;
 
     private int|Closure|null $limit = null;
 
@@ -79,14 +79,6 @@ class Geocoder extends Field
         return $this->countries($country);
     }
 
-    /** @param string|Closure(mixed...):string $language */
-    public function language(string|Closure $language): self
-    {
-        $this->language = $language;
-
-        return $this;
-    }
-
     /** @param bool|Closure(mixed...):bool $fuzzyMatch */
     public function fuzzyMatch(bool|Closure $fuzzyMatch = true): self
     {
@@ -122,11 +114,6 @@ class Geocoder extends Field
         return $countries;
     }
 
-    public function getLanguage(): ?string
-    {
-        return $this->language;
-    }
-
     public function getFuzzyMatch(): ?bool
     {
         $fuzzyMatch = $this->evaluate($this->fuzzyMatch);
@@ -134,6 +121,15 @@ class Geocoder extends Field
         assert(is_bool($fuzzyMatch) || is_null($fuzzyMatch));
 
         return $fuzzyMatch;
+    }
+
+    public function getLanguage(): ?string
+    {
+        $language = $this->evaluate($this->language);
+
+        assert(is_string($language));
+
+        return $language;
     }
 
     public function getLimit(): ?int
@@ -161,6 +157,14 @@ class Geocoder extends Field
         assert(is_string($types));
 
         return $types;
+    }
+
+    /** @param string|Closure(mixed...):string $language */
+    public function language(string|Closure $language): self
+    {
+        $this->language = $language;
+
+        return $this;
     }
 
     /** @param int|Closure(mixed...):int $limit */
