@@ -2,6 +2,12 @@
 
 All notable changes to `speniti/filament-mapbox` will be documented in this file.
 
+## v2.1.1 - 2025-10-23
+
+### What’s Changed
+
+* Add language property support (#9) @jeffreyvanhees
+
 ## v2.1.0 - 2025-10-03
 
 ### What’s Changed
