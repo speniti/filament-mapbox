@@ -27,6 +27,8 @@ class Geocoder extends Field
 
     private bool|Closure|null $fuzzyMatch = null;
 
+    private string|Closure|null $language = null;
+
     private int|Closure|null $limit = null;
 
     private int|Closure|null $minLength = null;
@@ -121,6 +123,15 @@ class Geocoder extends Field
         return $fuzzyMatch;
     }
 
+    public function getLanguage(): ?string
+    {
+        $language = $this->evaluate($this->language);
+
+        assert(is_string($language) || is_null($language));
+
+        return $language;
+    }
+
     public function getLimit(): ?int
     {
         $limit = $this->evaluate($this->limit);
@@ -146,6 +157,14 @@ class Geocoder extends Field
         assert(is_string($types));
 
         return $types;
+    }
+
+    /** @param string|Closure(mixed...):string $language */
+    public function language(string|Closure $language): self
+    {
+        $this->language = $language;
+
+        return $this;
     }
 
     /** @param int|Closure(mixed...):int $limit */

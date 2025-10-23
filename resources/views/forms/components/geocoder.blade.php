@@ -26,16 +26,19 @@
     <div
       x-load
       x-load-src="{{ FilamentAsset::getAlpineComponentSrc('geocoder', 'speniti/filament-mapbox') }}"
-      x-data="geocoder($wire.{{ $applyStateBindingModifiers("\$entangle('{$getStatePath()}')") }}, {
-        accessToken: @Js($getAccessToken()),
-        clearAndBlurOnEsc: @js($getClearAndBlurOnEsc(), JSON_THROW_ON_ERROR),
-        countries: @Js($getCountries()),
-        fuzzyMatch: @Js($getFuzzyMatch()),
-        limit: @Js($getLimit()),
-        minLength: @Js($getMinLength()),
-        placeholder: @Js($getPlaceholder()),
-        types: @Js($getTypes()),
-    }, @js($isDisabled(), JSON_THROW_ON_ERROR))"
+      x-data="geocoder($wire.{{ $applyStateBindingModifiers("\$entangle('{$getStatePath()}')") }},
+      @js(array_filter([
+        'accessToken' => $getAccessToken(),
+        'clearAndBlurOnEsc' => $getClearAndBlurOnEsc(),
+        'countries' => $getCountries(),
+        'language' => $getLanguage(),
+        'fuzzyMatch' => $getFuzzyMatch(),
+        'limit' => $getLimit(),
+        'minLength' => $getMinLength(),
+        'placeholder' => $getPlaceholder(),
+        'types' => $getTypes(),
+      ], fn($value) => !is_null($value) && $value !== '' && $value !== []), JSON_THROW_ON_ERROR),
+      @js($isDisabled(), JSON_THROW_ON_ERROR))"
       x-ignore
       wire:ignore
     ></div>

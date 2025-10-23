@@ -56,6 +56,8 @@ Geocoder::make('address')
     ->countries(string|array|Closure $countries) 
     // Like the one before but only one country.
     ->country(string|Closure $country)
+    // Specify the language to use for the results (default 'en').
+    ->language(string|Closure $language)
     // Specify whether the Geocoding API should attempt approximate, as well as exact, matching when performing searches (default true).
     ->fuzzyMatch(bool|Closure $fuzzyMatch = true)
     // Limit the maximum number of results to show (default 5).
