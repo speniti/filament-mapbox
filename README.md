@@ -12,7 +12,7 @@ the [Filament](https://filamentphp.com/) ecosystem.
 
 ### Prerequisites
 
-This package has been built for **Filament 3** and has been tested only with **PHP 8.4** and **Laravel 12**.
+This package has been built for **Filament 5** and has been tested only with **PHP 8.4** and **Laravel 12**.
 
 ### Installation
 
@@ -36,9 +36,9 @@ It Can be used in a form to search for an addresses.
 To search for an address, you can use it without any option:
 
 ```php
-public function form(Form $form): Form
+public function form(Schema $schema): Schema
 {
-    return $form->schema([
+    return $schema->components([
         Geocoder::make('address'),
     ]);
 }
@@ -51,9 +51,9 @@ The component can be customized with the following options:
 ```php
 Geocoder::make('address')
     // If true, the geocoder control will clear its contents and blur when the user presses the escape key (default true).
-    ->clearAndBlurOnEsc(bool|Closure $clearAndBlurOnEsc = true) 
+    ->clearAndBlurOnEsc(bool|Closure $clearAndBlurOnEsc = true)
     // Limit the result to the specified countries.
-    ->countries(string|array|Closure $countries) 
+    ->countries(string|array|Closure $countries)
     // Like the one before but only one country.
     ->country(string|Closure $country)
     // Specify the language to use for the results (default 'en').
@@ -70,7 +70,7 @@ Geocoder::make('address')
 
 See [FeatureType.php](src/Geocoder/FeatureType.php) for available types.
 
-Aside from the custom options, the component supports placeholder, affixes and suffixes and can be disabled.  
+Aside from the custom options, the component supports placeholder, affixes and suffixes and can be disabled.
 The only validation rule supported is `required`.
 
 #### Localization
@@ -87,9 +87,9 @@ For instance if you typehint `string` you will get the address as a string:
 ```php
 public string $address = '';
 
-public function form(Form $form): Form
+public function form(Schema $schema): Schema
 {
-    return $form->schema([
+    return $schema->components([
         Geocoder::make('address'),
     ]);
 }
@@ -97,7 +97,7 @@ public function form(Form $form): Form
 public function save(): void
 {
     $data = $this->form->getState();
-    
+
     // $address is a string containing the full address.
     // $data['address'] is also a string containing the full address.
     // e.g. "Times Square, New York, New York 10018, Stati Uniti d'America"
@@ -110,9 +110,9 @@ In a similar way, if you typehint `array` you will get an associative array with
  /** @var array<mixed> */
 public array $address = [];
 
-public function form(Form $form): Form
+public function form(Schema $schema): Schema
 {
-    return $form->schema([
+    return $schema->components([
         Geocoder::make('address'),
     ]);
 }
@@ -120,7 +120,7 @@ public function form(Form $form): Form
 public function save(): void
 {
     $data = $this->form->getState();
-    
+
     // $address is an associative array containing the address parts.
     // $data['address'] is also an associative array containing the address parts.
     // e.g. [
@@ -150,9 +150,9 @@ public function mount(): void
     $this->address = new AddressInfo();
 }
 
-public function form(Form $form): Form
+public function form(Schema $schema): Schema
 {
-    return $form->schema([
+    return $schema->components([
         Geocoder::make('address'),
     ]);
 }
@@ -160,7 +160,7 @@ public function form(Form $form): Form
 public function save(): void
 {
     $data = $this->form->getState();
-    
+
     // $address is an instance of AddressInfo containing the address parts.
     // $data['address'] is also an instance of AddressInfo containing the address parts.
     // e.g. Peniti\FilamentMapbox\Geocoder\AddressInfo {

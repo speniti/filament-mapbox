@@ -1,7 +1,6 @@
 import MapboxGeocoder, { GeocoderOptions } from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import { AlpineComponent } from 'alpinejs';
-import { GeocodeFeature } from '@mapbox/mapbox-sdk/services/geocoding';
 
 interface Geocoder extends Record<string, unknown> {
   geocoder: MapboxGeocoder|undefined;
@@ -23,8 +22,13 @@ interface AddressInfo {
   coords?: number[];
 }
 
+interface ContextItem {
+  id: string;
+  text: string;
+}
+
 interface ResultEvent {
-  result: GeocodeFeature;
+  result: MapboxGeocoder.Result;
 }
 
 export default function geocoder(
@@ -60,15 +64,17 @@ export default function geocoder(
         return;
       }
 
+      const context = result.context as ContextItem[];
+
       this.state = {
         address: result.place_name.split(',')[0],
         houseNumber: result.address,
         street: result.text,
-        postcode: result.context.find(ctx => ctx.id.startsWith('postcode'))
+        postcode: context.find(ctx => ctx.id.startsWith('postcode'))
           ?.text,
-        place: result.context.find(ctx => ctx.id.startsWith('place'))?.text,
-        region: result.context.find(ctx => ctx.id.startsWith('region'))?.text,
-        country: result.context.find(ctx => ctx.id.startsWith('country'))?.text,
+        place: context.find(ctx => ctx.id.startsWith('place'))?.text,
+        region: context.find(ctx => ctx.id.startsWith('region'))?.text,
+        country: context.find(ctx => ctx.id.startsWith('country'))?.text,
         placeName: result.place_name,
         coords: result.center
       };

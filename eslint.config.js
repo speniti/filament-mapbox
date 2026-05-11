@@ -1,14 +1,13 @@
 import eslint from '@eslint/js';
 import globals from 'globals';
 import prettierConfig from 'eslint-config-prettier';
+import { defineConfig } from 'eslint/config';
 import tslint from 'typescript-eslint';
 
-export default tslint.config(
+export default defineConfig([
+  { ignores: ['**/.gitlab-ci-local/', '**/dist/', '**/vendor/'] },
   {
-    ignores: ['**/.gitlab-ci-local/', '**/dist/', '**/vendor/'],
-  },
-  {
-    files: ['resources/**/*.ts'],
+    files: ['resources/**/*.ts', 'tailwind.config.ts'],
     extends: [
       eslint.configs.recommended,
       tslint.configs.strictTypeChecked,
@@ -19,14 +18,14 @@ export default tslint.config(
           globals: { ...globals.node },
           parserOptions: {
             projectService: true,
-            tsconfigRootDir: import.meta.dirname,
-          },
-        },
-      },
-    ],
+            tsconfigRootDir: import.meta.dirname
+          }
+        }
+      }
+    ]
   },
   {
     files: ['esbuild.js', '*.config.js'],
-    extends: [tslint.configs.disableTypeChecked],
-  },
-);
+    extends: [tslint.configs.disableTypeChecked]
+  }
+]);

@@ -46,9 +46,9 @@ describe(Geocoder::class, static function () {
         $testable->call('save');
 
         $testable->assertSetStrict('data', function (array $value) use ($addressInfo) {
-            assert(is_array($value['addressInfo']));
+            assert($value['addressInfo'] instanceof AddressInfo);
 
-            return empty(array_diff($value['addressInfoArray'], $addressInfo->toArray()));
+            return $value['addressInfo']->eq($addressInfo);
         });
 
         $testable->assertSet('addressInfo', function (AddressInfo $value) use ($addressInfo) {
