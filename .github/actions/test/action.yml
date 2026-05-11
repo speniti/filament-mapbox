@@ -26,7 +26,7 @@ runs:
 
     - name: Upload Coverage Report to Codecov
       if: ${{ inputs.codecov-token && !cancelled() }}
-      uses: codecov/codecov-action@v5
+      uses: codecov/codecov-action@v6
       with:
         token: ${{ inputs.codecov-token }}
         slug: speniti/filament-mapbox

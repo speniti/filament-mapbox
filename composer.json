@@ -17,8 +17,8 @@
   "minimum-stability": "stable",
   "require": {
     "php": "^8.4",
-    "filament/support": "^v4.0",
-    "league/iso3166": "^4.3"
+    "filament/support": "^5",
+    "league/iso3166": "^4"
   },
   "extra": {
     "laravel": {
@@ -28,13 +28,12 @@
     }
   },
   "require-dev": {
-    "orchestra/testbench": "v10.6",
-    "laravel/pint": "^1.21",
-    "larastan/larastan": "^3.2",
-    "filament/filament": "^v4.0",
-    "pestphp/pest": "^4.0",
-    "pestphp/pest-plugin-livewire": "^4.0",
-    "laravel/boost": "^1.0"
+    "orchestra/testbench": "11",
+    "laravel/pint": "^1",
+    "larastan/larastan": "^3",
+    "filament/filament": "^5",
+    "pestphp/pest": "^4",
+    "pestphp/pest-plugin-livewire": "^4"
   },
   "scripts": {
     "post-autoload-dump": [
