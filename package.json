@@ -30,6 +30,7 @@
     "esbuild": "^0",
     "eslint": "^10",
     "eslint-config-prettier": "^10",
+    "globals": "^17",
     "npm-run-all": "^4",
     "prettier-plugin-css-order": "^2",
     "stylelint": "^17",
@@ -40,7 +41,6 @@
     "typescript-eslint": "^8"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4",
-    "globals": "^17"
+    "@tailwindcss/cli": "^4"
   }
 }
